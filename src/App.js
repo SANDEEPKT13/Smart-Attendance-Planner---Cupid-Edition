@@ -784,14 +784,24 @@ const SmartAttendancePlanner = () => {
       </main>
 
       {/* Footer */}
-      <footer className={`${cardClass} border-t mt-12`}>
-        <div className="container mx-auto px-4 py-6 text-center">
-          <p className={`text-sm ${textSecondary}`}>
-            Made with 💜 for students who plan smart | Stay Above 75%
-          </p>
-        </div>
-      </footer>
+      <footer style={{ 
+  textAlign: 'center', 
+  padding: '20px 0', 
+  backgroundColor: '#f9f9f9', 
+  color: '#555', 
+  fontSize: '14px',
+  marginTop: '50px',
+  borderTop: '1px solid #ddd'
+}}>
+  <p>© 2024 Smart Attendance Planner — All Rights Reserved.</p>
+  <p>Designed & Developed by <strong>Sandeep Kumar</strong></p>
+  <p style={{ fontStyle: 'italic', fontSize: '12px', color: '#888' }}>
+    This project and its concept are original intellectual property. Unauthorized copying or redistribution is prohibited.
+  </p>
+</footer>
+
     </div>
+    
   );
 };
 
