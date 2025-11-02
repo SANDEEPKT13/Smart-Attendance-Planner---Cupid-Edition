@@ -794,7 +794,7 @@ const SmartAttendancePlanner = () => {
   borderTop: '1px solid #ddd'
 }}>
   <p>© 2024 Smart Attendance Planner — All Rights Reserved.</p>
-  <p>Designed & Developed by <strong>Sandeep Kumar</strong></p>
+  <p>Designed & Developed by <strong>VORTEX</strong></p>
   <p style={{ fontStyle: 'italic', fontSize: '12px', color: '#888' }}>
     This project and its concept are original intellectual property. Unauthorized copying or redistribution is prohibited.
   </p>
