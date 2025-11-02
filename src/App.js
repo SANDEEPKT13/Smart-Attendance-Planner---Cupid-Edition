@@ -703,7 +703,7 @@ const SmartAttendancePlanner = () => {
 
         {activeTab === 'about' && (
           <div className={`${cardClass} border rounded-2xl p-8 shadow-xl max-w-3xl mx-auto`}>
-            <h2 className={`text-2xl font-bold mb-6 ${textClass}`}>💘 About Smart Attendance Planner</h2>
+            <h2 className={`text-2xl font-bold mb-6 ${textClass}`}> About Smart Attendance Planner</h2>
             <div className="space-y-6">
               <div>
                 <h3 className={`text-lg font-bold mb-2 ${textClass}`}>How It Works</h3>
