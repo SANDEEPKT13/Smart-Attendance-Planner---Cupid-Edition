@@ -1,7 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Calculator, Calendar, Info, Sun, Moon, Download, RefreshCw, TrendingUp } from 'lucide-react';
 
+import { doc, setDoc, updateDoc, increment, onSnapshot } from "firebase/firestore";
+import { db } from "./firebase";  // <-- make sure this path matches your file
+
+
+
+
+
+
+
+
+
+
 function App() {
+
+
+    const [totalCalculations, setTotalCalculations] = useState(0);
+
+
+
   const [darkMode, setDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState('dashboard');
   const [present, setPresent] = useState('');
@@ -12,6 +30,11 @@ function App() {
   const [dailyMessage, setDailyMessage] = useState('');
   const [attendanceMessage, setAttendanceMessage] = useState('');
   const [appMode, setAppMode] = useState('serious'); // 'serious', 'fun', 'brutal'
+
+
+
+
+
   
   // Fixed timetable data
   const fixedTimetable = [
@@ -542,6 +565,31 @@ function App() {
     setDailyMessage(getDailyMotivation());
   }, []);
 
+useEffect(() => {
+  const docRef = doc(db, "appStats", "global");
+
+  const unsub = onSnapshot(
+    docRef,
+    (snap) => {
+      if (snap.exists()) {
+        setTotalCalculations(snap.data().totalCalculations || 0);
+      } else {
+        // If document not found, set to 0
+        setTotalCalculations(0);
+      }
+    },
+    (err) => {
+      console.error("Realtime listener error:", err);
+    }
+  );
+
+  // Cleanup listener when component unmounts
+  return () => unsub();
+}, []);
+
+
+
+
   useEffect(() => {
     if (present || total || targets || userGender || appMode) {
       localStorage.setItem('attendanceData', JSON.stringify({ present, total, targets, gender: userGender, mode: appMode }));
@@ -553,7 +601,29 @@ function App() {
     }
   }, [present, total, targets, userGender, appMode]);
 
-  const calculateAttendance = () => {
+
+  
+  
+  const incrementGlobalCounter = async () => {
+  const docRef = doc(db, "appStats", "global");
+  console.log("🟢 Increment function called!");
+
+  try {
+    await updateDoc(docRef, { totalCalculations: increment(1) });
+    console.log("✅ Successfully incremented in Firestore");
+  } catch (err) {
+    // If doc doesn't exist, create it with value 1
+    if (err.code === 'not-found' || err.message.includes('No document to update')) {
+      await setDoc(docRef, { totalCalculations: 1 });
+    } else {
+      console.error("Failed to update counter:", err);
+    }
+  }
+};
+
+
+  const calculateAttendance = async () => {
+
     const p = parseFloat(present);
     const t = parseFloat(total);
     const targetArray = targets.split(',').map(s => parseFloat(s.trim())).filter(n => !isNaN(n));
@@ -593,6 +663,11 @@ function App() {
     
     // Set attendance feedback message
     setAttendanceMessage(getAttendanceFeedback(currentPercent));
+
+    // Update Firestore counter
+    await incrementGlobalCounter();
+
+
   };
 
   const resetData = () => {
@@ -642,6 +717,29 @@ function App() {
     : 'bg-white/80 backdrop-blur-sm border-gray-200';
   const textClass = darkMode ? 'text-gray-100' : 'text-gray-800';
   const textSecondary = darkMode ? 'text-gray-400' : 'text-gray-600';
+
+
+
+   // ✅ 3. Setup the realtime Firestore listener once
+  useEffect(() => {
+    const docRef = doc(db, "appStats", "global");
+    const unsub = onSnapshot(
+      docRef,
+      (snap) => {
+        if (snap.exists()) {
+          setTotalCalculations(snap.data().totalCalculations || 0);
+        } else {
+          setTotalCalculations(0);
+        }
+      },
+      (err) => {
+        console.error("Realtime listener error:", err);
+      }
+    );
+
+    return () => unsub();
+  }, []);
+
 
   return (
     <div className={`min-h-screen ${bgClass} transition-colors duration-300`}>
@@ -1135,12 +1233,17 @@ function App() {
         )}
       </main>
 
+      
+
+
       <footer className={`${cardClass} border-t mt-12`}>
   <div className="container mx-auto px-4 py-5">
     <div className="text-center space-y-3 text-[#555] text-sm">
-      {/* <p>
-        Made with love for students who plan smart
-      </p> */}
+      <p className="text-sm text-gray-500 mt-2">
+        🌍 Total Calculations Done: {totalCalculations}
+      </p>
+
+
       <div className={`pt-3  ${darkMode ? 'border-gray-700 text-gray-300' : 'border-gray-300 text-[#555]'}`}>
         <p className="font-medium">
           © 2025 Smart Attendance Planner - All Rights Reserved
