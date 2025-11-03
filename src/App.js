@@ -1076,7 +1076,7 @@ function App() {
                 <h3 className={`text-lg font-bold mb-2 ${textClass}`}>Three Modes</h3>
                 <ul className={`list-disc list-inside space-y-2 ${textSecondary}`}>
                   <li><strong>📚Serious Mode:</strong> Professional motivational messages focused on academic excellence</li>
-                  <li><strong>😉Fun Mode Cupid:</strong> Playful romantic messages with gender-based personalization</li>
+                  <li><strong>😉Fun Mode Cupid:</strong> Playful messages with gender-based personalization</li>
                   <li><strong>💀Dark Brutal Mode:</strong> Harsh reality checks and philosophical truth bombs</li>
                 </ul>
               </div>
