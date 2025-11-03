@@ -1156,7 +1156,7 @@ function App() {
                 : "text-blue-500"
             }`}
           >
-            Sandeep Kumar
+            VORTEX
           </span>
         </p>
         <p className="mt-2 italic text-xs">
