@@ -1,4 +1,4 @@
-import React, { useCallback ,useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calculator, Calendar, Info, Sun, Moon, Download, RefreshCw, TrendingUp } from 'lucide-react';
 
 import { doc, setDoc, updateDoc, increment, onSnapshot } from "firebase/firestore";
@@ -536,13 +536,12 @@ function App() {
   };
 
   // Main message getters based on mode
-  const getDailyMotivation = useCallback(() => {
-  if (appMode === 'serious') return getSeriousDailyMessage();
-  if (appMode === 'fun') return getFunDailyMessage();
-  if (appMode === 'brutal') return getBrutalDailyMessage();
-  return getSeriousDailyMessage();
-}, [appMode, getSeriousDailyMessage, getFunDailyMessage, getBrutalDailyMessage]);
-
+  const getDailyMotivation = () => {
+    if (appMode === 'serious') return getSeriousDailyMessage();
+    if (appMode === 'fun') return getFunDailyMessage();
+    if (appMode === 'brutal') return getBrutalDailyMessage();
+    return getSeriousDailyMessage();
+  };
 
   const getAttendanceFeedback = (attendance) => {
     if (appMode === 'serious') return getSeriousFeedback(attendance);
@@ -564,7 +563,7 @@ function App() {
     
     // Show daily motivation on page load
     setDailyMessage(getDailyMotivation());
-  }, [getDailyMotivation]);
+  }, []);
 
 useEffect(() => {
   const docRef = doc(db, "appStats", "global");
@@ -600,7 +599,6 @@ useEffect(() => {
     if (userGender || appMode) {
       setDailyMessage(getDailyMotivation());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [present, total, targets, userGender, appMode]);
 
 
