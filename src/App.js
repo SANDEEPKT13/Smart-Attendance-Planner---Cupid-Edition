@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
 import { Calculator, Calendar, Info, Sun, Moon, Download, RefreshCw, TrendingUp } from 'lucide-react';
 
@@ -740,7 +741,6 @@ useEffect(() => {
     return () => unsub();
   }, []);
 
-
   return (
     <div className={`min-h-screen ${bgClass} transition-colors duration-300`}>
       {/* Header */}
@@ -756,7 +756,7 @@ useEffect(() => {
                 <TrendingUp className="text-white" size={24} />
               </div>
               <div>
-                <h1 className={`text-2xl font-bold ${textClass}`}>Smart Attendance Planner</h1>
+                <h1 className={`text-2xl font-bold ${textClass}`}>BunkSensei</h1>
                 <p className={`text-sm ${textSecondary}`}>
                   {appMode === 'brutal' ? 'Face Reality. Take Action.' :
                    appMode === 'fun' ? 'Plan Smart. Stay Above 75%' :
@@ -1161,12 +1161,12 @@ useEffect(() => {
 
         {activeTab === 'about' && (
           <div className={`${cardClass} border rounded-2xl p-8 shadow-xl max-w-3xl mx-auto`}>
-            <h2 className={`text-2xl font-bold mb-6 ${textClass}`}>ℹ️ About Smart Attendance Planner</h2>
+            <h2 className={`text-2xl font-bold mb-6 ${textClass}`}>ℹ️ About BunkSensei</h2>
             <div className="space-y-6">
               <div>
                 <h3 className={`text-lg font-bold mb-2 ${textClass}`}>How It Works</h3>
                 <p className={textSecondary}>
-                  Smart Attendance Planner helps you stay on top of your college attendance by calculating exactly how many lectures you need to attend or can safely skip to maintain your target percentage. Now with three unique modes to keep you motivated!
+                  BunkSensei helps you stay on top of your college attendance by calculating exactly how many lectures you need to attend or can safely skip to maintain your target percentage. Now with three unique modes to keep you motivated!
                 </p>
               </div>
               
@@ -1246,7 +1246,7 @@ useEffect(() => {
 
       <div className={`pt-3  ${darkMode ? 'border-gray-700 text-gray-300' : 'border-gray-300 text-[#555]'}`}>
         <p className="font-medium">
-          © 2025 Smart Attendance Planner - All Rights Reserved
+          © 2025 BunkSensei - All Rights Reserved
         </p>
         <p className="mt-1">
           Designed & Developed by{" "}
@@ -1270,8 +1270,31 @@ useEffect(() => {
   </div>
 </footer>
 
+
+
+      {/* Bottom Ad Container */}
+      <div style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        padding: "10px 0",
+        position: "fixed",
+        bottom: 0,
+        background: "#fff",
+        borderTop: "1px solid #ddd",
+        zIndex: 1000,
+      }}>
+        {/* AdSense or Ad Script here */}
+        <div id="ad-banner">
+          {/* ad script loaded here */}
+        </div>
+      </div>
+
     </div>
-  );
+    
+
+          );
+  
 }
 
 
