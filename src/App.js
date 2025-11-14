@@ -1003,7 +1003,7 @@ function App() {
               <div className="flex gap-3 mt-6">
                 <button
                   onClick={calculateAttendance}
-                  className={`flex-1 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg hover:scale-105 transition-all ${
+                  className={`flex-1 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg active:scale-95 transition-all ${
                     appMode === "brutal"
                       ? "bg-gradient-to-r from-gray-700 to-black"
                       : appMode === "fun"
@@ -1016,7 +1016,7 @@ function App() {
                 </button>
                 <button
                   onClick={resetData}
-                  className={`px-6 py-3 rounded-lg border ${cardClass} hover:scale-105 transition-all`}
+                  className={`px-6 py-3 rounded-lg border ${cardClass} hover:scale-105 active:scale-95 transition-all`}
                 >
                   <RefreshCw size={18} />
                 </button>
