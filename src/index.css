@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Black Cursor CSS */
+* {
+  cursor: url("https://cur.cursors-4u.net/cursors/cur-2/cur106.cur"), auto !important;
+}
+
