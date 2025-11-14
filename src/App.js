@@ -881,7 +881,7 @@ function App() {
                 onClick={() => setDarkMode(!darkMode)}
                 className={`p-2 rounded-lg ${cardClass} border hover:scale-105 transition-transform`}
               >
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                {darkMode ? <Sun color="white" size={20} /> : <Moon size={20} />}
               </button>
             </div>
           </div>
