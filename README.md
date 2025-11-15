@@ -1,12 +1,12 @@
-# 🎯 Smart Attendance Planner  
+# 🎯 BunkSensie  
 **_Face Reality. Take Action._**  
 
-[🌐 Live Demo](https://attendanceplannerqe.netlify.app/)  
+[🌐 Live Demo](https://bunksensei.vercel.app/)  
 
 ---
 
 ## 🧭 Overview  
-**Smart Attendance Planner** is an intelligent, motivational tool that helps students **plan, calculate, and track their attendance** in a smart, visually appealing way.  
+**BunkSensie** is an intelligent, motivational tool that helps students **plan, calculate, and track their attendance** in a smart, visually appealing way.  
 It blends functionality with emotion — offering **different modes** ( Serious, Fun and Brutal) that adjust the interface and tone of messages to suit your mindset.  
 
 The app is designed for students who want to plan smart, stay consistent, and never get caught off guard by attendance shortages again.
